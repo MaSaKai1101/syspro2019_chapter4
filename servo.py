@@ -10,15 +10,20 @@ bottom = 2.5
 middle = 7.2
 top = 12.0
 
+def setservo(input):
+	value = float(input) * 0.02666
+	return value
+
+servo.ChangeDutyCycle(top)
 for i in range(5):
-	servo.ChangeDutyCycle(bottom)
+	inputer = input()
+	value = setservo(inputer)
+	print("{:1f}".format(value))
+	servo.ChangeDutyCycle(value)
 	time.sleep(1.0)
 
-	servo.ChangeDutyCycle(middle)
-	time.sleep(1.0)
-
-	servo.ChangeDutyCycle(top)
-	time.sleep(1.0)
+servo.stop()
+GPIO.cleanup()
 
 
 
